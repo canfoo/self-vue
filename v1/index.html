@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>self-vue</title>
+</head>
+<style>
+    #name {
+        text-align: center;
+    }
+</style>
+<body>
+    <h1 id="name">{{name}}</h1>
+</body>
+<script src="js/observer.js"></script>
+<script src="js/watcher.js"></script>
+<script src="js/index.js"></script>
+
+<script type="text/javascript">
+    var ele = document.querySelector('#name');
+    var selfVue = new SelfVue({
+        name: 'hello world'
+    }, ele, 'name');
+
+    window.setTimeout(function () {
+        console.log('name值改变了');
+        selfVue.data.name = 'canfoo';
+    }, 2000);
+
+</script>
+
+</html>
