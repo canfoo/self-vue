@@ -5,27 +5,35 @@
     <title>self-vue</title>
 </head>
 <style>
-    #name {
+    #app {
         text-align: center;
     }
 </style>
 <body>
-    <h1 id="name">{{name}}</h1>
+    <div id="app">
+        <h2>{{title}}</h2>
+        <h1>{{name}}</h1>
+    </div>
 </body>
 <script src="js/observer.js"></script>
 <script src="js/watcher.js"></script>
+<script src="js/compile.js"></script>
 <script src="js/index.js"></script>
 
 <script type="text/javascript">
-    var ele = document.querySelector('#name');
+
     var selfVue = new SelfVue({
-        name: 'hello world'
-    }, ele, 'name');
+        title: 'hello world',
+        name: ''
+    }, '#app');
 
     window.setTimeout(function () {
-        console.log('name值改变了');
-        selfVue.name = 'canfoo';
+        selfVue.title = '你好';
     }, 2000);
+
+    window.setTimeout(function () {
+        selfVue.name = 'canfoo';
+    }, 2500);
 
 </script>
 

@@ -1,5 +1,6 @@
-function SelfVue (data, el, exp) {
+function SelfVue (data, el) {
     var self = this;
+    this.vm = this;
     this.data = data;
 
     Object.keys(data).forEach(function(key) {
@@ -7,10 +8,7 @@ function SelfVue (data, el, exp) {
     });
 
     observe(data);
-    el.innerHTML = this.data[exp];  // 初始化模板数据的值
-    new Watcher(this, exp, function (value) {
-        el.innerHTML = value;
-    });
+    new Compile(el, this.vm);
     return this;
 }
 
