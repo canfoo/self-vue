@@ -10,7 +10,7 @@ Watcher.prototype = {
         this.run();
     },
     run: function() {
-        var value = this.get();
+        var value = this.vm.data[this.exp];
         var oldVal = this.value;
         if (value !== oldVal) {
             this.value = value;

@@ -52,9 +52,6 @@ Compile.prototype = {
     updateText: function (node, value) {
         node.textContent = typeof value == 'undefined' ? '' : value;
     },
-    isElementNode: function (node) {
-        return node.nodeType == 1;
-    },
     isTextNode: function(node) {
         return node.nodeType == 3;
     }

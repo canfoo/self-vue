@@ -12,31 +12,34 @@
 <body>
     <div id="app">
         <h2>{{title}}</h2>
+        <input v-model="name">
         <h1>{{name}}</h1>
+        <button v-on:click="clickMe">click me!</button>
     </div>
 </body>
 <script src="js/observer.js"></script>
 <script src="js/watcher.js"></script>
 <script src="js/compile.js"></script>
 <script src="js/index.js"></script>
-
 <script type="text/javascript">
 
-    var selfVue = new SelfVue({
+     new SelfVue({
         el: '#app',
         data: {
             title: 'hello world',
-            name: ''
+            name: 'canfoo'
+        },
+        methods: {
+            clickMe: function () {
+                this.title = 'hello world';
+            }
+        },
+        mounted: function () {
+            window.setTimeout(() => {
+                this.title = '你好';
+            }, 1000);
         }
     });
-
-    window.setTimeout(function () {
-        selfVue.title = '你好';
-    }, 2000);
-
-    window.setTimeout(function () {
-        selfVue.name = 'canfoo';
-    }, 2500);
 
 </script>
 </html>
