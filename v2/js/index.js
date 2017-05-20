@@ -1,14 +1,14 @@
-function SelfVue (data, el) {
+function SelfVue (option) {
     var self = this;
     this.vm = this;
-    this.data = data;
+    this.data = option.data;
 
-    Object.keys(data).forEach(function(key) {
+    Object.keys(this.data).forEach(function(key) {
         self.proxyKeys(key);
     });
 
-    observe(data);
-    new Compile(el, this.vm);
+    observe(this.data);
+    new Compile(option.el, this.vm);
     return this;
 }
 

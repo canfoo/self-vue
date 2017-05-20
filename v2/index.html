@@ -23,9 +23,12 @@
 <script type="text/javascript">
 
     var selfVue = new SelfVue({
-        title: 'hello world',
-        name: ''
-    }, '#app');
+        el: '#app',
+        data: {
+            title: 'hello world',
+            name: ''
+        }
+    });
 
     window.setTimeout(function () {
         selfVue.title = '你好';
