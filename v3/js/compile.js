@@ -32,9 +32,8 @@ Compile.prototype = {
             var reg = /\{\{(.*)\}\}/;
             var text = node.textContent;
 
-            if (self.isElementNode(node)) {
+            if (self.isElementNode(node)) {  
                 self.compile(node);
-
             } else if (self.isTextNode(node) && reg.test(text)) {
                 self.compileText(node, reg.exec(text)[1]);
             }
@@ -47,7 +46,6 @@ Compile.prototype = {
     compile: function(node) {
         var nodeAttrs = node.attributes;
         var self = this;
-
         Array.prototype.forEach.call(nodeAttrs, function(attr) {
             var attrName = attr.name;
             if (self.isDirective(attrName)) {
@@ -105,7 +103,7 @@ Compile.prototype = {
         return attr.indexOf('v-') == 0;
     },
     isEventDirective: function(dir) {
-        return dir.indexOf('on') === 0;
+        return dir.indexOf('on:') === 0;
     },
     isElementNode: function (node) {
         return node.nodeType == 1;
