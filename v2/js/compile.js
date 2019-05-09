@@ -29,9 +29,9 @@ Compile.prototype = {
         var childNodes = el.childNodes;
         var self = this;
         [].slice.call(childNodes).forEach(function(node) {
-            var reg = /\{\{(.*)\}\}/;
+            var reg = /\{\{\s*(.*?)\s*\}\}/;
             var text = node.textContent;
-
+            console.log('text', text)
             if (self.isTextNode(node) && reg.test(text)) {  // 判断是否是符合这种形式{{}}的指令
                 self.compileText(node, reg.exec(text)[1]);
             }
